@@ -1,0 +1,129 @@
+import java.util.Arrays;
+
+public class Main {
+    public static void main (String[] args) {
+        printThreeWords();
+        checkSumSign();
+        printColor();
+        compareNubers();
+        System.out.println(sumRange(6, 7));
+        System.out.println(sumRange(10, 15));
+        peredayetsyaTseloyeChislo(3);
+        peredayetsyaTseloyeChislo(-6);
+        System.out.println(peredaChislo6(3));
+        System.out.println(peredaChislo6(-6));
+        printString8( "Было сложно", 5);
+        System.out.println(leapYear(2024));
+        System.out.println(leapYear(1900));
+        System.out.println(leapYear(2000));
+        int[] arr = {1,1,0,0,1,1,0,0};
+        for (int i = 0; i < arr.length; i++){
+            arr[i] = (arr[i]== 0) ? 1:0;
+        }
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+        int[] numder = new int[100];
+        for ( int i = 0; i < numder.length; i++) {
+            numder[i] = i + 1;
+        }
+        System.out.println(Arrays.toString(numder));
+
+        int[] twenn = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        for ( int i = 0; i < twenn.length; i++) {
+            if (twenn[i] < 6) {
+                twenn[i] *= 2;
+            }
+        }
+        System.out.println(Arrays.toString(twenn));
+        int n = 5;
+        int [] [] matrix = new int[n][n];
+        for (int i = 0; i< n; i++){
+            matrix[i][i]= 1;
+            matrix[i][n - 1 - i] = 1;
+        }
+        for (int[] row : matrix) {
+            System.out.println(Arrays.toString(row));
+        }
+        int[] arar = createArray(5, 7);
+        System.out.println(Arrays.toString(arar));
+    }
+    public static void printThreeWords(){
+        System.out.print("Orange\nBanana\nApple\n");
+    }
+    public static void checkSumSign() {
+        int a = 5;
+        int b = 10;
+        int sum = a + b;
+        if (sum >= 0) {
+            System.out.println("Сумма положительная");
+        } else {
+           System.out.println("Сумма отрицательная");
+        }
+    }
+    public static void printColor() {
+        int value = 0;
+        if (value <= 0){
+            System.out.println("Красный");
+        } else if (value > 0 && value <= 100) {
+            System.out.println("Желтый");
+        } else {
+                System.out.println("Зеленый");
+            }
+    }
+    public static void compareNubers() {
+        int a = 3;
+        int b = 5;
+        if (a >= b) {
+            System.out.println("a>=b");
+        } else {
+            System.out.println("a<b");
+        }
+
+    }
+    public static boolean sumRange(int a, int b) {
+        int sum = a + b;
+        if (sum >= 10 && sum <= 20) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public static void peredayetsyaTseloyeChislo( int numder) {
+        if (numder >= 0) {
+            System.out.println("Число положительное");
+        } else {
+            System.out.println("Число отрицательное");
+        }
+    }
+    public static boolean peredaChislo6 (int number) {
+        if (number <0) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public static void printString8(String str, int count) {
+        for (int i = 0; i < 5; i++) {
+            System.out.println(str +" "+ count);
+        }
+    }
+public static boolean leapYear(int year){
+        if (year % 400 == 0){
+            return true;
+        }
+        if (year % 100 == 0){
+            return false;
+        }
+        if (year % 4 == 0){
+            return true;
+        }
+        return false;
+    }
+public static int[] createArray(int len, int initialValue) {
+    int[] array = new int[len];
+    Arrays.fill(array, initialValue);
+    return array;
+}
+}

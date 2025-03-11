@@ -1,0 +1,81 @@
+{
+    public static final int SIZE = 4;
+
+    public static int processArray(String[][] array) throws MyArraySizeException, MyArrayDataException {
+
+        if (array.length != SIZE) {
+            throw new MyArraySizeException("Массив должен быть размером 4x4!");
+        }
+        for (String[] row : array) {
+            if (row.length != SIZE) {
+                throw new MyArraySizeException("Массив должен быть размером 4x4!");
+            }
+        }
+
+        int sum = 0;
+
+
+        for (int i = 0; i < SIZE; i++) {
+            for (int j = 0; j < SIZE; j++) {
+                try {
+                    sum += Integer.parseInt(array[i][j]);
+                } catch (NumberFormatException e) {
+                    throw new MyArrayDataException("Ошибка в ячейке [" + i + "][" + j + "]: '" + array[i][j] + "' не является числом.");
+                }
+            }
+        }
+
+        return sum;
+    }
+
+    public static void main(String[] args) {
+
+        String[][] correctArray = {
+                {"1", "2", "3", "4"},
+                {"5", "6", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
+
+
+        String[][] incorrectDataArray = {
+                {"1", "2", "3", "4"},
+                {"5", "X", "7", "8"},
+                {"9", "10", "11", "12"},
+                {"13", "14", "15", "16"}
+        };
+
+
+        String[][] incorrectSizeArray = {
+                {"1", "2", "3"},
+                {"4", "5", "6"},
+                {"7", "8", "9"}
+        };
+
+        try {
+            System.out.println("Сумма элементов массива: " + processArray(correctArray));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
+        try {
+            System.out.println("Сумма элементов массива: " + processArray(incorrectDataArray));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
+        try {
+            System.out.println("Сумма элементов массива: " + processArray(incorrectSizeArray));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println("Ошибка: " + e.getMessage());
+        }
+
+
+        try {
+            int[] exampleArray = {1, 2, 3};
+            System.out.println(exampleArray[5]); 
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Исключение: " + e.getMessage());
+        }
+    }
+}

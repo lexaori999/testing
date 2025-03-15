@@ -2,56 +2,56 @@ import java.util.Arrays;
 
 public class Main {
     public static void main (String[] args) {
-        printThreeWords();
-        checkSumSign();
-        printColor();
-        compareNubers();
-        System.out.println(sumRange(6, 7));
+        printThreeWords(); //1
+        System.out.println();
+        checkSumSign(); //2
+        System.out.println();
+        printColor(); //3
+        System.out.println();
+        compareNubers(); //4
+        System.out.println();
+        System.out.println(sumRange(6, 7)); //5
         System.out.println(sumRange(10, 15));
-        peredayetsyaTseloyeChislo(3);
+        System.out.println();
+        peredayetsyaTseloyeChislo(3); //6
         peredayetsyaTseloyeChislo(-6);
-        System.out.println(peredaChislo6(3));
+        System.out.println();
+        System.out.println(peredaChislo6(3)); //7
         System.out.println(peredaChislo6(-6));
-        printString8( "Было сложно", 5);
-        System.out.println(leapYear(2024));
+        System.out.println();
+        printString8( "Было сложно", 5); //8
+        System.out.println();
+        System.out.println(leapYear(2024)); //9
         System.out.println(leapYear(1900));
         System.out.println(leapYear(2000));
-        int[] arr = {1,1,0,0,1,1,0,0};
-        for (int i = 0; i < arr.length; i++){
-            arr[i] = (arr[i]== 0) ? 1:0;
-        }
-        for (int num : arr) {
-            System.out.print(num + " ");
-        }
+        System.out.println(leapYear(2023));
         System.out.println();
-        int[] numder = new int[100];
-        for ( int i = 0; i < numder.length; i++) {
-            numder[i] = i + 1;
-        }
-        System.out.println(Arrays.toString(numder));
-
-        int[] twenn = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
-        for ( int i = 0; i < twenn.length; i++) {
-            if (twenn[i] < 6) {
-                twenn[i] *= 2;
-            }
-        }
-        System.out.println(Arrays.toString(twenn));
-        int n = 5;
-        int [] [] matrix = new int[n][n];
-        for (int i = 0; i< n; i++){
-            matrix[i][i]= 1;
-            matrix[i][n - 1 - i] = 1;
-        }
-        for (int[] row : matrix) {
-            System.out.println(Arrays.toString(row));
-        }
-        int[] arar = createArray(5, 7);
-        System.out.println(Arrays.toString(arar));
+        int[] binaryArray = {1, 1, 0, 0, 1, 0, 1, 1, 0, 0};//10
+        int[] invertedArray = invertArray(binaryArray);
+        System.out.println(Arrays.toString(invertedArray));
+        System.out.println();
+        int[] numbers = new int[100]; // 11
+        fillArray(numbers);
+        System.out.println(Arrays.toString(numbers));
+        System.out.println();
+        int[] number = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};//12
+        modifyArray(number);
+        System.out.println( Arrays.toString(number));
+        System.out.println();
+        int size = 5; // 13
+        int[][] matrix = fillMainDiagonal(size);
+        printMatrix(matrix);
+        System.out.println();
+        int len = 5;//14
+        int initialValue = 7;
+        int[] resultArray = createArray(len, initialValue);
+        printArray(resultArray);
     }
+
     public static void printThreeWords(){
         System.out.print("Orange\nBanana\nApple\n");
     }
+
     public static void checkSumSign() {
         int a = 5;
         int b = 10;
@@ -59,9 +59,10 @@ public class Main {
         if (sum >= 0) {
             System.out.println("Сумма положительная");
         } else {
-           System.out.println("Сумма отрицательная");
+            System.out.println("Сумма отрицательная");
         }
     }
+
     public static void printColor() {
         int value = 0;
         if (value <= 0){
@@ -69,9 +70,10 @@ public class Main {
         } else if (value > 0 && value <= 100) {
             System.out.println("Желтый");
         } else {
-                System.out.println("Зеленый");
-            }
+            System.out.println("Зеленый");
+        }
     }
+
     public static void compareNubers() {
         int a = 3;
         int b = 5;
@@ -82,6 +84,7 @@ public class Main {
         }
 
     }
+
     public static boolean sumRange(int a, int b) {
         int sum = a + b;
         if (sum >= 10 && sum <= 20) {
@@ -90,40 +93,85 @@ public class Main {
             return false;
         }
     }
-    public static void peredayetsyaTseloyeChislo( int numder) {
+
+    public static void peredayetsyaTseloyeChislo( int numder) { //6
         if (numder >= 0) {
             System.out.println("Число положительное");
         } else {
             System.out.println("Число отрицательное");
         }
     }
-    public static boolean peredaChislo6 (int number) {
+
+    public static boolean peredaChislo6 (int number) { //7
         if (number <0) {
             return true;
         }else {
             return false;
         }
     }
-    public static void printString8(String str, int count) {
-        for (int i = 0; i < 5; i++) {
-            System.out.println(str +" "+ count);
+
+    public static void printString8(String str, int count) { //8
+        for (int i = 0; i < count; i++) {
+            System.out.println(str);
         }
     }
-public static boolean leapYear(int year){
-        if (year % 400 == 0){
-            return true;
-        }
-        if (year % 100 == 0){
-            return false;
-        }
-        if (year % 4 == 0){
-            return true;
-        }
-        return false;
+
+    public static boolean leapYear(int year){ //9
+        return (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
     }
-public static int[] createArray(int len, int initialValue) {
-    int[] array = new int[len];
-    Arrays.fill(array, initialValue);
-    return array;
-}
+
+    public static int[] invertArray(int[] array) { //10
+        int[] invertedArray = new int[array.length];
+        int index = 0;
+        for (int num : array) {
+            invertedArray[index++] = (num == 0) ? 1 : 0;
+        }
+        return invertedArray;
+    }
+
+    public static void fillArray(int[] array) { //11
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i + 1;
+        }
+    }
+
+    public static void modifyArray(int[] array) { //12
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] < 6) {
+                array[i] *= 2;
+            }
+        }
+    }
+    public static int[][] fillMainDiagonal(int size) { //13
+        int[][] matrix = new int[size][size];
+        for (int i = 0; i < size; i++) {
+            matrix[i][i] = 1;
+            matrix[i][size - 1 - i] = 1;
+        }
+        return matrix;
+    }
+
+    public static void printMatrix(int[][] matrix) {//13
+        for (int[] row : matrix) {
+            for (int num : row) {
+                System.out.print(num + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[] createArray(int len, int initialValue) {//14
+        int[] array = new int[len];
+        for (int i = 0; i < len; i++) {
+            array[i] = initialValue;
+        }
+        return array;
+    }
+
+    public static void printArray(int[] array) {
+        for (int num : array) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+    }
 }
